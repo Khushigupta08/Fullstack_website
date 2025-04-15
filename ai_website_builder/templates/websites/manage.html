@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Websites</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Your Websites</h2>
+        <ul class="website-list">
+            {% for website in websites %}
+            <li>
+                <h3>{{ website.title }}</h3>
+                <p>{{ website.content|truncatechars:100 }}</p>
+                <div class="actions">
+                    <a href="{% url 'websites:edit' website.id %}">Edit</a>
+                    <a href="{% url 'websites:delete' website.id %}" onclick="return confirm('Are you sure you want to delete this website?')">Delete</a>
+                    <a href="{% url 'websites:preview' website.id %}">Preview</a>
+                </div>
+            </li>
+            {% empty %}
+            <li>No websites available.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'websites:generate' %}">Create New Website</a>
+    </div>
+</body>
+</html>

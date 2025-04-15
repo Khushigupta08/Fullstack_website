@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Website</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Generate New Website</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="business_type" placeholder="Business Type" required>
+            <input type="text" name="industry" placeholder="Industry" required>
+            <button type="submit">Generate</button>
+        </form>
+        <a href="{% url 'websites:manage' %}">Manage Existing Websites</a>
+    </div>
+</body>
+</html>
